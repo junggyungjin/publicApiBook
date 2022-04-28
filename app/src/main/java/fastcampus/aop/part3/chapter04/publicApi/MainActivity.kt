@@ -68,7 +68,6 @@ class MainActivity : AppCompatActivity() {
 
     fun initBookRecyclearView() {
         adapter = BookAdapter()
-
         binding.bookRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.bookRecyclerView.adapter = adapter
     }

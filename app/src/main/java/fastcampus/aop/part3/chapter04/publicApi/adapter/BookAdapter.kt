@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import fastcampus.aop.part3.chapter04.publicApi.databinding.ItemBookBinding
 import fastcampus.aop.part3.chapter04.publicApi.model.Book
 
@@ -13,6 +14,12 @@ class BookAdapter: androidx.recyclerview.widget.ListAdapter<Book, BookAdapter.Bo
 
         fun bind(bookModel: Book) {
             binding.titleTextView.text = bookModel.title
+            binding.descriptionTextView.text = bookModel.description
+
+            Glide
+                .with(binding.coverImageView.context)
+                .load(bookModel.coverSmallUrl)
+                .into(binding.coverImageView)
         }
     }
 
