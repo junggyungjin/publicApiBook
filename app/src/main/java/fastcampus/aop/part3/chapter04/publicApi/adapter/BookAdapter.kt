@@ -8,13 +8,17 @@ import com.bumptech.glide.Glide
 import fastcampus.aop.part3.chapter04.publicApi.databinding.ItemBookBinding
 import fastcampus.aop.part3.chapter04.publicApi.model.Book
 
-class BookAdapter: androidx.recyclerview.widget.ListAdapter<Book, BookAdapter.BookItemViewHolder>(diffUtil) {
+class BookAdapter(private val itemClickedListener: (Book) -> Unit): androidx.recyclerview.widget.ListAdapter<Book, BookAdapter.BookItemViewHolder>(diffUtil) {
 
     inner class BookItemViewHolder(private val binding: ItemBookBinding): RecyclerView.ViewHolder(binding.root) {
 
         fun bind(bookModel: Book) {
             binding.titleTextView.text = bookModel.title
             binding.descriptionTextView.text = bookModel.description
+
+            binding.root.setOnClickListener {
+                itemClickedListener(bookModel)
+            }
 
             Glide
                 .with(binding.coverImageView.context)
