@@ -12,7 +12,7 @@ import fastcampus.aop.part3.chapter04.publicApi.model.History
 
 class HistoryAdapter(val historyDeleteClickedListener: (String) -> Unit) :
     androidx.recyclerview.widget.ListAdapter<History, HistoryAdapter.HistoryItemViewHolder>(
-        HistoryAdapter.diffUtil
+        diffUtil
     ) {
     inner class HistoryItemViewHolder(private val binding: ItemHistoryBinding) :
         RecyclerView.ViewHolder(binding.root) {

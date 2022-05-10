@@ -16,14 +16,15 @@ class BookAdapter(private val itemClickedListener: (Book) -> Unit): androidx.rec
             binding.titleTextView.text = bookModel.title
             binding.descriptionTextView.text = bookModel.description
 
-            binding.root.setOnClickListener {
-                itemClickedListener(bookModel)
-            }
-
             Glide
                 .with(binding.coverImageView.context)
                 .load(bookModel.coverSmallUrl)
                 .into(binding.coverImageView)
+
+            binding.root.setOnClickListener {
+                itemClickedListener(bookModel)
+            }
+
         }
     }
 
